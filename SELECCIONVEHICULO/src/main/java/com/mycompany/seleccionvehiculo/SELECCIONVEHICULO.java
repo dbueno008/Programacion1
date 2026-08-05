@@ -20,6 +20,9 @@ public class SELECCIONVEHICULO {
         // TODO code application logic here
         Scanner entrada = new Scanner (System.in);
         int cantidadLitros = 0;
+        char respuestoTipo = 'a';
+        String respuestaCadena = "John Doe";
+        
         
         System.out.println("Me dijeron que eres duenio de un vehiculo \"Verde\"");
         System.out.println("Tienes que hecharle biodiesel");
@@ -28,7 +31,7 @@ public class SELECCIONVEHICULO {
         
         
         
-        if(cantidadLitros>30) {
+        if(cantidadLitros >= 30) {
             //Condicion VERDADERO
             System.out.println("Es un vehiculo con");
             System.out.println("grandes capacidades");
@@ -36,9 +39,21 @@ public class SELECCIONVEHICULO {
         }
         System.out.println("");
         
-        entrada.nextLine();
+        entrada.nextLine(); //Limpiar el Buffer
         System.out.println("Tu vehiculo es Diesel? (x - si, y = no");
-        char respuestoTipo = entrada.nextLine().charAt(0);
+        respuestoTipo = entrada.nextLine().charAt(0);
+        /*
+        System.out.printf("\nRespuesta Dada: %c",respuestoTipo);
+        
+        System.out.println("\nTu vehiculo es Diesel? (x - si, y = no");
+        respuestoTipo = entrada.nextLine().charAt(1);
+        System.out.printf("Respuesta Dada: %c",respuestoTipo);
+        
+        System.out.println("\nTu vehiculo es Diesel? (x - si, y = no");
+        respuestoTipo = entrada.nextLine().charAt(2);
+        System.out.printf("Respuesta Dada: %c",respuestoTipo);
+        */
+        
         
         if(respuestoTipo =='x'){
             System.out.println("Si es diesel verde!!");
@@ -46,12 +61,42 @@ public class SELECCIONVEHICULO {
             System.out.println("Se saca del maiz");
         }
         else
-        {   System.out.println("Uyyy... eres anticlimatico");
-            System.out.println("Calentamiento Global!!![");
-        
-        
-        
+        {   
+            //CONDICION FALSA
+            System.out.println("Uyyy... eres anticlimatico");
+            System.out.println("Calentamiento Global!!!");
+      
+             
+            
         }
+        
+        
+        System.out.println("");
+        
+        System.out.println("Tu carro es energeticamente eficiente?");
+        respuestaCadena = entrada.nextLine();
+        
+        /*
+        System.out.printf("Respuesta Ingresada: %s",respuestaCadena);
+        
+        System.out.println("\nSeguro que es asi?");
+        respuestaCadena = entrada.nextLine().toUpperCase();
+        System.out.printf("Respuesta Ingresada: %s",respuestaCadena);
+        
+        System.out.println("\n100% seguro?");
+        respuestaCadena = entrada.next().toLowerCase();
+        System.out.printf("Respuesta Ingresada: %s",respuestaCadena);
+        */
+        
+        if(respuestaCadena.equals("si") ){
+            System.out.println("Exceelente");
+            System.out.println("Amigabble con el ambiente");
+            
+        }
+        else{
+            System.out.println("Uyy...Busca que se puede hacer");
+        }
+        
     } //fin main
 
 
