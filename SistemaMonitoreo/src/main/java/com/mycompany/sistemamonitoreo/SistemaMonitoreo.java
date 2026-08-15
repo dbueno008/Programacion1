@@ -4,6 +4,9 @@
 
 package com.mycompany.sistemamonitoreo;
 
+import java.util.Random;
+import java.util.Scanner;
+
 /**
      * Desarrolla un programa en Java que simule la lectura de sensores de 
      * temperatura en un cuarto de servidores. El programa debe solicitar 
@@ -68,19 +71,81 @@ public class SistemaMonitoreo {
      *          a. Definicion de Libreria RANDOM
      *          b. Declaracion de Variable 
      *          c. Mostrar el numero Random Generado Temporalmente 
+     *          d. Rango de Temp 200 - 400
+     *          e. Ciclo de Repeticion, WHILE
      * 
+     *   4. Formula: F = (C * 9/5)+32
+     *   5. Limite de Sobrecalentamiento 350 C (662 F)
+     *          Estructura de Seleccion (IF/ELSE)
+     *   6. Validacion de Lecturas (DO WHILE) -> 0 -50
+     *   7. Sumar los numeros de sobrecalentamiento
+     *   8. Calcular el promedio
+     *   9. Mostrar el Resumen
+     *          Promedio   
+     *          # de SobreCalentamiento
+     *   10. Generar una Alerta de Sobrecalentamiento 
      */
     
     
     
     public static void main(String[] args) {
          // TODO code application logic here
+         Scanner sc = new Scanner(System.in);
+         Random rd = new Random();
+         
+         String nombreUsuario = "John Doe";
+         int numLectura = 0;
+         int ciclo = 0;
+         double tempC = 0;
+         double tempF = 0;
+         int numSobreCalentamiento = 0;
+         double promedio = 0;
+         double acumTEMP = 0;
          
          
+         System.out.println("Nombre de Operacion: ");
+         nombreUsuario = sc.nextLine().toUpperCase();
+         System.out.printf("Validar Captura: %s\n",nombreUsuario);
+         
+         do{
+            System.out.println("Numero de Lecturas: ");
+            numLectura = sc.nextInt();
+            //System.out.printf("Validar Captura: %d\n",numLectura);
+            if (numLectura <0 || numLectura>50){
+             System.out.println("Valor NO VALIDO");
+             System.out.println("Tiene que ser entre 0 y 50");
+         }
+         }while(numLectura<0 || numLectura>50);
+         
+         while(ciclo < numLectura){
+         tempC = rd.nextDouble(200,400);
+         System.out.printf("Validacion Random :%.2f\n",tempC);
          
          
+               tempC = rd.nextDouble(200,500);
+               tempF = (tempC*9/5)+32;
+               //System.out.printf("Validacion Random :%.2f\n",tempC);
+               System.out.printf("Num Lec: %d\tTemp C: %.2f\n",ciclo+1, tempC);
+               System.out.printf("Temp en Faren: %.2f\n",tempF);
+               
+               if(tempF>662){
+                   System.out.println("Alerta!!!...SobreCalentamiento");
+                   numSobreCalentamiento++;
+               }//FIN D IF
+               else{ 
+                   acumTEMP +=tempF;
+               }//FIN ELSE
+               
+               ciclo++;
+         }//FIN DE WHILE
+         promedio = acumTEMP / numLectura; 
          
-         
+         System.out.println("-------------");
+         System.out.println("   RESUMEN   ");
+         System.out.println("-------------");
+         System.out.println("");
+         System.out.printf("Promedio de TEMP: %.2f\n",promedio);
+         System.out.printf("# SobreCalentamiento: %d",numSobreCalentamiento);
          
     }//Fin de Main
     
